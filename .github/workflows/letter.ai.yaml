@@ -17,7 +17,7 @@ jobs:
     steps:
     # Upstream: https://github.com/sigstore/cosign-installer
       - name: Install Cosign
-        uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003
+        uses: chainguard-actions/sigstore-cosign-installer@ee4cbe9d40f013d6e4f46bdec68986402d77163e # v4.1.1
 
       - name: Verify Cosign installation
         run: cosign version
