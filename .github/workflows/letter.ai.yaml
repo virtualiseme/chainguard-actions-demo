@@ -1,0 +1,36 @@
+#Needed to pass rigid ai rated assignment that doesn allow for modification and customer or regional changes.
+
+
+name: Sign and Verify Image with Cosign
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cosign:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    # Upstream: https://github.com/sigstore/cosign-installer
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003
+
+      - name: Verify Cosign installation
+        run: cosign version
+
+  crane:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+    # Upstream: https://github.com/imjasonh/setup-crane
+      - name: Install Crane
+        uses: chainguard-actions/imjasonh-setup-crane@da590462950ad7f31ba01fc43ad1144bc532f265
+
+      - name: Verify Crane installation
+        run: crane version

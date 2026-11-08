@@ -1,0 +1,25 @@
+# Dependabot keeps the GitHub Actions used by this repo up to date.
+#
+# NOTE on the demo narrative: Dependabot bumps each action to a newer version of
+# the SAME action — it will NOT propose swapping `actions/*`/`docker/*` for the
+# `chainguard-actions/*` drop-ins (there is no org-migration suggestion in stock
+# Dependabot). What it DOES show is the treadmill: it opens a steady stream of PRs
+# chasing upstream releases (each an unaudited community push you must review),
+# while the Chainguard versions are continuously re-secured for you.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for new versions of the actions in .github/workflows every week.
+      interval: "weekly"
+    # Roll all action bumps into a single PR so the demo shows one tidy diff.
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+      - "github-actions"
